@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import CtaBand from '../components/CtaBand.astro';
-import Fact from '../components/Fact.astro';
 import { business, serviceAreaSentence } from '../data/business';
 ---
 <Base
@@ -15,7 +14,7 @@ import { business, serviceAreaSentence } from '../data/business';
     eyebrow="About"
     title={`${business.yearsLocal} years in the valley. Still answering the phone.`}
     lead="RiverGuard Solutions is a small, local IT company for small, local businesses. We live here, we shop here, and our clients are our neighbours."
-    cta={{ label: `Talk to ${business.owner}`, href: '/contact' }}
+    cta={{ label: 'Talk to us', href: '/contact' }}
   />
 
   <section class="section">
@@ -37,12 +36,6 @@ import { business, serviceAreaSentence } from '../data/business';
         <li><strong>Numbers, not adjectives.</strong> You’ll get response times and restore-test results, not “fast” and “secure”.</li>
         <li><strong>No fear.</strong> We’ll state a risk once, plainly, and spend the rest of the conversation on the fix.</li>
         <li><strong>Say what we won’t do.</strong> If something is out of scope or not worth your money, we’ll tell you.</li>
-      </ul>
-
-      <h2>Credentials</h2>
-      <p>The tools matter less than the people running them, but the people should be qualified. Certifications held by our team:</p>
-      <ul>
-        {business.certifications.map((c) => <li><Fact value={c} /></li>)}
       </ul>
     </div>
   </section>

@@ -34,11 +34,11 @@ Google Sites keeps working right up until DNS switches; nothing to turn off ther
 
 Until then the Contact page shows phone and email instead of a form.
 
-## 3. Optional — fill in the placeholders
+## 3. Optional — fill in the remaining placeholders
 
-Open `src/data/business.ts`. Everything in `[SQUARE BRACKETS]` is a placeholder and is highlighted amber on the live site: phone, email, hours, street address, average response time, client count, certifications. Replace, commit, `npm run deploy`. Or just tell Claude the values.
+Two numbers on the home page proof strip are still placeholders, highlighted amber on the live site: average response time and number of businesses supported (`stats` in `src/data/business.ts`). Give Claude real figures, or swap them for other true numbers.
 
-Also worth a read: `src/data/services.ts` (`wontDo` list) and `src/data/industries.ts` — all copy is a first draft in your voice; change anything that doesn't sound like you.
+All copy is a first draft in your voice — `src/data/services.ts` and `src/data/industries.ts` hold most of it; change anything that doesn't sound like you.
 
 ## 4. Optional — auto-deploy on push
 

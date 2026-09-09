@@ -54,13 +54,13 @@ const next = new URL('/contact?sent=1', Astro.site).href;
       <div><dt>Email</dt><dd><a href={emailHref}><Fact value={business.email} /></a></dd></div>
       <div><dt>Hours</dt><dd><Fact value={business.hours} /></dd></div>
     </dl>
-    <p>Tell us what’s going on in a sentence or two. You’ll get a real answer from {business.owner}, not a form letter.</p>
-    <Button href={emailHref} variant="primary">Email {business.owner}</Button>
+    <p>Tell us what’s going on in a sentence or two. You’ll get a real answer from a person, not a form letter.</p>
+    <Button href={emailHref} variant="primary">Email us</Button>
   </div>
 )}
 
 <div class="sent" id="sent" hidden role="status">
-  <strong>Thanks — your message is on its way.</strong> {business.owner} will get back to you soon.
+  <strong>Thanks — your message is on its way.</strong> We’ll get back to you soon.
 </div>
 
 <style>

@@ -1,10 +1,9 @@
 ---
 import Button from './Button.astro';
-import { business } from '../data/business';
 interface Props { title?: string; body?: string; label?: string; href?: string }
 const {
   title = 'Let’s talk about your office.',
-  body = `A 30-minute walkthrough, no slide deck. ${business.owner} will tell you what he’d fix first — and if we’re not the right fit, he’ll say so.`,
+  body = 'A 30-minute walkthrough, no slide deck. We’ll tell you what we’d fix first — and if we’re not the right fit, we’ll say so.',
   label = 'Book a walkthrough',
   href = '/contact',
 } = Astro.props;

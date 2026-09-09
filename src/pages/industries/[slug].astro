@@ -3,7 +3,6 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { industries } from '../../data/industries';
-import { business } from '../../data/business';
 
 export function getStaticPaths() {
   return industries.map((i) => ({ params: { slug: i.slug }, props: { industry: i } }));
@@ -63,7 +62,7 @@ const others = industries.filter((i) => i.slug !== industry.slug);
     </div>
   </section>
 
-  <CtaBand label={industry.cta} body={`${business.owner} will come to your office, look at what you have, and tell you what he’d fix first. If we’re not the right fit, he’ll say so.`} />
+  <CtaBand label={industry.cta} body="We’ll come to your office, look at what you have, and tell you what we’d fix first. If we’re not the right fit, we’ll say so." />
 </Base>
 
 <style>

@@ -27,12 +27,12 @@ export const services: Service[] = [
   {
     slug: 'security',
     name: 'Managed security',
-    promise: 'A security team watching every computer, 24/7 — and a plan for when something gets through.',
+    promise: 'Security that watches every computer around the clock — and a plan for when something gets through.',
     detail:
-      'Every computer gets managed detection and response (MDR): software that watches for the behaviour of an attacker, backed by a team of human analysts working around the clock. If a machine is compromised they isolate it within minutes, at 3am on a Sunday if that’s when it happens. Your Microsoft 365 and email accounts get the same treatment, so a stolen password doesn’t become a stolen mailbox.',
+      'Every computer gets managed detection and response (MDR): software that runs 24/7 and watches for the behaviour of an attacker, not just known viruses. When it sees something, it can isolate that machine automatically to stop the spread while we investigate and get you back to work. Your Microsoft 365 and email accounts get the same kind of protection, so a stolen password doesn’t become a stolen mailbox.',
     bullets: [
-      '24/7 human-staffed detection and response on every computer',
-      'Compromised machines isolated in minutes, not mornings',
+      'Detection and response running 24/7 on every computer',
+      'Compromised machines isolated automatically to stop the spread',
       'Identity protection for Microsoft 365 and email accounts',
       'Multi-factor authentication (MFA) set up properly, once',
       'Short, practical security training for your staff',
@@ -43,10 +43,10 @@ export const services: Service[] = [
     name: 'Help desk',
     promise: 'A person you know answers.',
     detail:
-      'Call, email, or click the icon on your desktop. You get Brad or someone Brad has personally trained — not a queue, not a script, not a different stranger every time. Most fixes happen remotely the same day. If it needs hands on a keyboard, we come to you.',
+      'Call, email, or click the icon on your desktop. You get someone who knows your office — not a queue, not a script, not a different stranger every time. Most fixes happen remotely, often the same day. If it needs hands on a keyboard, we come to you.',
     bullets: [
       'Phone, email, or one click from your desktop',
-      'Remote fixes the same day for most issues',
+      'Remote fixes for most issues, often the same day',
       'We explain what happened in words you’d use yourself',
       'No ticket left open without a next step and a date',
     ],
@@ -68,7 +68,7 @@ export const services: Service[] = [
 
 /**
  * Trust is built by limits. These appear on the Services page.
- * TODO(Brad): edit to match your actual policies — especially anything about contracts or after-hours.
+ * TODO: edit to match your actual policies — especially anything about contracts or after-hours.
  */
 export const wontDo: string[] = [
   'Name-drop vendors to sound impressive. We’ll tell you what a tool does and why you need it.',

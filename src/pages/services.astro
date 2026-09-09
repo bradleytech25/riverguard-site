@@ -4,7 +4,6 @@ import Hero from '../components/Hero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { wontDo } from '../data/services';
-import { business } from '../data/business';
 ---
 <Base
   title="Services"
@@ -35,15 +34,6 @@ import { business } from '../data/business';
       <ul class="wont">
         {wontDo.map((w) => <li>{w}</li>)}
       </ul>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container-tight prose">
-      <p class="eyebrow">Pricing</p>
-      <h2>One monthly number.</h2>
-      <p>Managed IT and security is priced per person, per month, so the bill scales with your business and not with how many times something broke. On-site projects — a new office, a server move — are quoted up front before any work starts.</p>
-      <p>We don’t publish a rate card because every office is different, but {business.owner} will give you a real number at the end of a walkthrough, not a “starting from”.</p>
     </div>
   </section>
 
