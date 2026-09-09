@@ -19,6 +19,31 @@ export type Industry = {
 
 export const industries: Industry[] = [
   {
+    slug: 'small-business',
+    name: 'Small businesses',
+    shortName: 'Small businesses',
+    eyebrow: 'Real estate, professional offices, retail, trades',
+    headline: 'You didn’t start a business to manage computers.',
+    intro:
+      'Most of the valley runs on small offices: a real estate brokerage on Main Street, an accountant with four staff, a shop in Bellevue, a contractor working out of a truck. You need email that works, files that are safe, and someone to call who already knows your setup — without hiring an IT department.',
+    pains: [
+      { title: 'The “computer person” is the owner', body: 'Every hour you spend on a printer or a password reset is an hour not spent on clients. We take that job off your desk, and we’re quicker at it.' },
+      { title: 'Email is the business', body: 'Contracts, listings, invoices, and client conversations all live in your inbox. One convincing phishing email can undo a year of work. We lock the door properly and watch it.' },
+      { title: 'Growth without a plan', body: 'A new hire needs a laptop, an account, and access on day one. A new office needs Wi-Fi that reaches the back room. We make those routine instead of a scramble.' },
+    ],
+    whatWeDo: [
+      'New hires set up and working the same week, and departures closed out the same day',
+      'Microsoft 365 or Google Workspace protected with multi-factor authentication (MFA) and monitored for account takeover',
+      'Every computer patched and watched around the clock',
+      'Backups you can actually restore from, tested regularly',
+      'Office Wi-Fi, network, and printers that behave',
+      'On-site help across the valley when a screen isn’t enough',
+    ],
+    proofLine: 'From the brokerage on Main Street to the shop in Bellevue — the same service, sized to you.',
+    cta: 'Talk to us',
+    seoDescription: 'Managed IT for small businesses in Idaho’s Wood River Valley — real estate, professional offices, retail, and trades. Email protection, patching, backups, and a local number.',
+  },
+  {
     slug: 'medical-practices',
     name: 'Medical and surgical practices',
     shortName: 'Medical practices',
@@ -95,5 +120,5 @@ export const industries: Industry[] = [
   },
 ];
 
-/** Verticals we serve but do not (yet) have a dedicated page for. */
-export const alsoServe = ['law firms', 'accountants', 'property managers', 'retail and restaurants', 'contractors and trades'];
+/** Named on the home page so a reader recognises their own business. */
+export const alsoServe = ['real estate offices', 'law firms', 'accountants', 'property managers', 'retail and restaurants', 'contractors and trades'];

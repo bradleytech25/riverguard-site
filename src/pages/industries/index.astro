@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import WhoWeServe from '../../components/WhoWeServe.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+<Base title="Who we serve" description="Managed IT for the small businesses of Idaho’s Wood River Valley: real estate and professional offices, medical practices, public districts and co-ops, and non-profits." footerRidgeBg="var(--rg-navy-900)">
+  <Hero
+    compact
+    eyebrow="Who we serve"
+    title="Small businesses that can’t afford a bad IT day."
+    lead="We work with the offices that keep the valley running. Some have needs specific enough that we wrote them up; the rest are covered by the first one."
+    cta={{ label: 'Talk to us', href: '/contact' }}
+  />
+  <section class="section">
+    <div class="container">
+      <WhoWeServe />
+    </div>
+  </section>
+  <section class="section section-subtle">
+    <div class="container-tight prose">
+      <p class="eyebrow">Already have IT?</p>
+      <h2>We also work alongside in-house IT.</h2>
+      <p>If your office already has an IT person or a small team, we don’t replace them — we add the monitoring, security tooling, and cover they don’t have time to build. <a href="/services#co-managed">How co-managed IT works →</a></p>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

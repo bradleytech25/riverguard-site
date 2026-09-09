@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import CtaBand from '../components/CtaBand.astro';
+import CoManaged from '../components/CoManaged.astro';
 import { wontDo } from '../data/services';
 ---
 <Base
@@ -24,7 +25,9 @@ import { wontDo } from '../data/services';
     </div>
   </section>
 
-  <section class="section section-subtle">
+  <CoManaged />
+
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">How we work</p>
@@ -42,7 +45,7 @@ import { wontDo } from '../data/services';
 
 <style>
   .wont { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--rg-space-6); }
-  .wont li { margin: 0; padding: var(--rg-space-6); background: var(--rg-stone-0); border: 1px solid var(--rg-border); border-radius: var(--rg-radius-md); position: relative; padding-left: calc(var(--rg-space-6) + 1.5rem); color: var(--rg-text); }
+  .wont li { margin: 0; padding: var(--rg-space-6); background: var(--rg-bg-subtle); border: 1px solid var(--rg-border); border-radius: var(--rg-radius-md); position: relative; padding-left: calc(var(--rg-space-6) + 1.5rem); color: var(--rg-text); }
   .wont li::before { content: ''; position: absolute; left: var(--rg-space-6); top: calc(var(--rg-space-6) + 0.6em); width: 0.75rem; height: 2px; background: var(--rg-danger-600); }
   @media (max-width: 767px) { .wont { grid-template-columns: 1fr; } }
 </style>

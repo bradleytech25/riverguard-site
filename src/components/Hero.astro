@@ -17,8 +17,9 @@ interface Props {
 }
 const { eyebrow, title, lead, cta, secondary, nextBg = 'var(--rg-bg)', compact = false } = Astro.props;
 ---
-<section class:list={['hero section-dark', { compact }]}>
-  <div class="container">
+<section class:list={['hero section-dark', { compact, 'has-visual': Astro.slots.has('visual') }]}>
+  <div class="container hero-grid">
+   <div class="copy">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <h1>{title}</h1>
     <p class="lead">{lead}</p>
@@ -29,12 +30,18 @@ const { eyebrow, title, lead, cta, secondary, nextBg = 'var(--rg-bg)', compact =
       </div>
     )}
     <slot />
+   </div>
+   {Astro.slots.has('visual') && <div class="visual"><slot name="visual" /></div>}
   </div>
 </section>
 <Ridgeline bg={nextBg} />
 
 <style>
   .hero { padding-block: clamp(4rem, 10vw, 8.5rem) clamp(3rem, 7vw, 6rem); }
+  .hero.has-visual { padding-block: clamp(3rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--rg-space-12); align-items: center; }
+  .has-visual .hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  @media (max-width: 1023px) { .has-visual .hero-grid { grid-template-columns: minmax(0, 1fr); gap: var(--rg-space-10); } }
   .hero.compact { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem); }
   .eyebrow { margin-bottom: var(--rg-space-4); }
   h1 { font-size: var(--rg-text-5xl); line-height: var(--rg-leading-display); letter-spacing: var(--rg-tracking-display); max-width: 18ch; }

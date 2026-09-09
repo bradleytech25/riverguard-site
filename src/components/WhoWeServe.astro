@@ -3,7 +3,7 @@ import { industries, alsoServe } from '../data/industries';
 const also = [...alsoServe];
 const lastAlso = also.pop();
 ---
-<div class="grid grid-3">
+<div class="grid grid-4">
   {industries.map((i) => (
     <a class="card tile" href={`/industries/${i.slug}`}>
       <p class="eyebrow">{i.eyebrow}</p>
@@ -13,7 +13,7 @@ const lastAlso = also.pop();
     </a>
   ))}
 </div>
-<p class="also">We also look after {also.join(', ')}, and {lastAlso} across the valley. If you run a small business here, we can probably help.</p>
+<p class="also">That covers {also.join(', ')}, and {lastAlso} — and if you run a small business in the valley that isn’t on the list, we can almost certainly help.</p>
 
 <style>
   .tile { display: flex; flex-direction: column; text-decoration: none; color: inherit; }

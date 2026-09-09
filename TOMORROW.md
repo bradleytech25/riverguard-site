@@ -34,11 +34,9 @@ Google Sites keeps working right up until DNS switches; nothing to turn off ther
 
 Until then the Contact page shows phone and email instead of a form.
 
-## 3. Optional — fill in the remaining placeholders
+## 3. Optional — read the copy as yourself
 
-Two numbers on the home page proof strip are still placeholders, highlighted amber on the live site: average response time and number of businesses supported (`stats` in `src/data/business.ts`). Give Claude real figures, or swap them for other true numbers.
-
-All copy is a first draft in your voice — `src/data/services.ts` and `src/data/industries.ts` hold most of it; change anything that doesn't sound like you.
+No placeholders are left on the site. All copy is a first draft in your voice — `src/data/services.ts` and `src/data/industries.ts` hold most of it; change anything that doesn't sound like you.
 
 ## 4. Optional — auto-deploy on push
 
@@ -48,5 +46,5 @@ Right now publishing is `npm run deploy`. To have GitHub build and publish autom
 
 - The site repo `bradleytech25/riverguard-site` is **public** (required for free GitHub Pages). It contains only site code, brand tokens, and logo SVGs. The brand repo stays private.
 - "Peekaboo" was written as **Picabo** (the town's spelling).
-- Services listed: managed IT & monitoring, managed security, help desk, on-site service. Backup, Microsoft 365 management, and networking are mentioned inside those but not as headline services.
+- Headline services: managed IT & monitoring, managed security, help desk, on-site service — plus a co-managed IT section for offices that already have an IT person.
 - No vendor names anywhere; capabilities only.

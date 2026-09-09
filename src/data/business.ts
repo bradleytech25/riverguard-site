@@ -18,8 +18,8 @@ export const business = {
   phone: '208-481-0984',
   email: 'brad@riverguard.solutions',
   hours: 'Monday–Friday, 9am–5pm Mountain',
+  /** Home-based — no street address is published. */
   address: {
-    street: '[STREET ADDRESS]',
     city: 'Hailey',
     state: 'ID',
     zip: '83333',
@@ -29,13 +29,11 @@ export const business = {
   serviceArea: ['Hailey', 'Bellevue', 'Carey', 'Picabo', 'Sun Valley', 'Ketchum'],
   region: 'Wood River Valley',
 
-  /** Proof strip numbers. Keep to four. Numbers beat adjectives. */
+  /** Proof strip numbers. Keep to three. Numbers beat adjectives. */
   stats: [
     { value: '20+', label: 'years in the valley' },
     { value: '24/7', label: 'monitoring and security' },
-    // TODO: real measured figures
-    { value: '[12] min', label: 'average response time' },
-    { value: '[40]+', label: 'local businesses supported' },
+    { value: '< 1 hr', label: 'average response time' },
   ],
 
   /**

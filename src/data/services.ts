@@ -29,7 +29,7 @@ export const services: Service[] = [
     name: 'Managed security',
     promise: 'Security that watches every computer around the clock — and a plan for when something gets through.',
     detail:
-      'Every computer gets managed detection and response (MDR): software that runs 24/7 and watches for the behaviour of an attacker, not just known viruses. When it sees something, it can isolate that machine automatically to stop the spread while we investigate and get you back to work. Your Microsoft 365 and email accounts get the same kind of protection, so a stolen password doesn’t become a stolen mailbox.',
+      'Every computer gets managed detection and response (MDR): software that runs 24/7 and watches for the behaviour of an attacker, not just known viruses. When it sees something, it isolates that machine automatically to stop the spread — at 3am on a Sunday, or over Christmas, because it doesn’t take time off. Then we investigate and get you back to work. Your Microsoft 365 and email accounts get the same kind of protection, so a stolen password doesn’t become a stolen mailbox.',
     bullets: [
       'Detection and response running 24/7 on every computer',
       'Compromised machines isolated automatically to stop the spread',

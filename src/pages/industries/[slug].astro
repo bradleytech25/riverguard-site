@@ -57,6 +57,7 @@ const others = industries.filter((i) => i.slug !== industry.slug);
       </div>
       <ul class="others">
         {others.map((o) => <li><a href={`/industries/${o.slug}`}>{o.name} <span aria-hidden="true">→</span></a></li>)}
+        <li><a href="/services#co-managed">Already have IT? Co-managed <span aria-hidden="true">→</span></a></li>
         <li><a href="/services">All services <span aria-hidden="true">→</span></a></li>
       </ul>
     </div>

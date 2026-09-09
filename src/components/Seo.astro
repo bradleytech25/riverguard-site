@@ -24,7 +24,6 @@ const jsonLd = localBusiness && {
   ...(isPlaceholder(business.email) ? {} : { email: business.email }),
   address: {
     '@type': 'PostalAddress',
-    ...(isPlaceholder(business.address.street) ? {} : { streetAddress: business.address.street }),
     addressLocality: business.address.city,
     addressRegion: business.address.state,
     postalCode: business.address.zip,

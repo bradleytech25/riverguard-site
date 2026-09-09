@@ -8,6 +8,8 @@ import WhoWeServe from '../components/WhoWeServe.astro';
 import ServiceArea from '../components/ServiceArea.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CtaBand from '../components/CtaBand.astro';
+import CoManaged from '../components/CoManaged.astro';
+import ValleyScene from '../components/ValleyScene.astro';
 import { business } from '../data/business';
 ---
 <Base
@@ -22,7 +24,9 @@ import { business } from '../data/business';
     lead="We keep small businesses in the Wood River Valley running: computers patched and watched around the clock, security that never switches off, and a person you know who answers the phone."
     cta={{ label: 'Book a walkthrough', href: '/contact' }}
     secondary={{ label: 'See what we do', href: '/services' }}
-  />
+  >
+    <ValleyScene slot="visual" />
+  </Hero>
 
   <ProofStrip />
 
@@ -37,7 +41,9 @@ import { business } from '../data/business';
     </div>
   </section>
 
-  <section class="section section-subtle">
+  <CoManaged id="co-managed-home" />
+
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">How it works</p>
@@ -48,7 +54,7 @@ import { business } from '../data/business';
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-subtle" id="who-we-serve">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Who we serve</p>
@@ -59,7 +65,7 @@ import { business } from '../data/business';
     </div>
   </section>
 
-  <section class="section section-subtle">
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Where we are</p>

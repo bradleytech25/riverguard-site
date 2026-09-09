@@ -1,0 +1,127 @@
+---
+/**
+ * The hero graphic: the Wood River Valley at night. Layered ridgelines, a slow
+ * sky, and a handful of office lights across the valley floor — each one
+ * quietly "checked" in turn. It tells the 24/7 story without a stock photo.
+ *
+ * Canvas, no library. Colours are read from the brand tokens at runtime.
+ * Respects prefers-reduced-motion by drawing a single still frame.
+ */
+---
+<figure class="scene" aria-hidden="true">
+  <canvas class="valley" width="800" height="600"></canvas>
+  <figcaption>Hailey, 3 a.m. Every computer still watched.</figcaption>
+</figure>
+
+<style>
+  .scene { margin: 0; position: relative; width: 100%; }
+  .valley { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; border-radius: var(--rg-radius-md); background: var(--rg-navy-950); }
+  figcaption {
+    margin-top: var(--rg-space-4);
+    font-size: var(--rg-text-sm); font-weight: var(--rg-weight-semibold); letter-spacing: var(--rg-tracking-eyebrow);
+    text-transform: uppercase; color: var(--rg-teal-300);
+  }
+  @media (max-width: 1023px) { .valley { aspect-ratio: 16 / 7; } }
+</style>
+
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>('canvas.valley');
+  if (canvas) {
+    const ctx = canvas.getContext('2d')!;
+    const root = getComputedStyle(document.documentElement);
+    const token = (n: string) => root.getPropertyValue(n).trim();
+    const C = {
+      skyTop: token('--rg-navy-950') || '#02101F',
+      skyBottom: token('--rg-navy-900') || '#042146',
+      far: token('--rg-navy-800') || '#0A3164',
+      mid: '#072A52',
+      near: token('--rg-navy-900') || '#042146',
+      star: token('--rg-navy-200') || '#BAD3EC',
+      light: token('--rg-teal-300') || '#7CCBE6',
+      glow: token('--rg-signal-200') || '#F5CB92',
+    };
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Deterministic pseudo-random so the valley looks the same on every visit.
+    let seed = 20250908;
+    const rnd = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+    type Ridge = { base: number; amp: number; waves: { f: number; p: number; a: number }[]; color: string };
+    const ridge = (base: number, amp: number, color: string): Ridge => ({
+      base, amp, color,
+      waves: Array.from({ length: 5 }, (_, i) => ({ f: (i + 1) * (0.9 + rnd() * 0.6), p: rnd() * Math.PI * 2, a: 1 / (i + 1) })),
+    });
+    const ridges = [ridge(0.52, 0.11, C.far), ridge(0.63, 0.085, C.mid), ridge(0.76, 0.06, C.near)];
+    const ridgeY = (r: Ridge, x: number, w: number, h: number) => {
+      let y = 0;
+      for (const wv of r.waves) y += Math.sin((x / w) * Math.PI * 2 * wv.f + wv.p) * wv.a;
+      return h * (r.base + y * r.amp * 0.5);
+    };
+
+    const stars = Array.from({ length: 110 }, () => ({ x: rnd(), y: rnd() * 0.55, r: 0.4 + rnd() * 1.1, p: rnd() * Math.PI * 2, s: 0.4 + rnd() * 0.8 }));
+    // Office lights sit on the valley floor between the mid and near ridges.
+    const lights = Array.from({ length: 16 }, () => ({ x: 0.04 + rnd() * 0.92, d: rnd(), p: rnd() * Math.PI * 2, warm: rnd() < 0.35 }));
+
+    let w = 0, h = 0, dpr = 1;
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = Math.max(1, Math.round(rect.width)); h = Math.max(1, Math.round(rect.height));
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const draw = (t: number) => {
+      const sky = ctx.createLinearGradient(0, 0, 0, h);
+      sky.addColorStop(0, C.skyTop); sky.addColorStop(1, C.skyBottom);
+      ctx.fillStyle = sky; ctx.fillRect(0, 0, w, h);
+
+      for (const s of stars) {
+        const a = 0.25 + 0.55 * (0.5 + 0.5 * Math.sin(t * 0.0006 * s.s + s.p));
+        ctx.globalAlpha = a; ctx.fillStyle = C.star;
+        ctx.beginPath(); ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      ridges.forEach((r, i) => {
+        // The far ridges drift a hair; the near one holds still, like a horizon should.
+        const drift = (2 - i) * Math.sin(t * 0.00005 + i) * 1.5;
+        ctx.fillStyle = r.color; ctx.beginPath(); ctx.moveTo(0, h);
+        for (let x = 0; x <= w; x += 4) ctx.lineTo(x, ridgeY(r, x + drift, w, h));
+        ctx.lineTo(w, h); ctx.closePath(); ctx.fill();
+        if (i === 1) {
+          // lights live on the slope of the mid ridge, just above the near ridge
+          for (const l of lights) {
+            const x = l.x * w;
+            const yMid = ridgeY(ridges[1], x + drift, w, h), yNear = ridgeY(ridges[2], x, w, h);
+            const y = yMid + (yNear - yMid) * (0.25 + l.d * 0.6);
+            const pulse = 0.65 + 0.35 * Math.sin(t * 0.0012 + l.p);
+            ctx.fillStyle = l.warm ? C.glow : C.light;
+            ctx.globalAlpha = pulse * 0.18; ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+            ctx.globalAlpha = pulse; ctx.beginPath(); ctx.arc(x, y, 2.1, 0, Math.PI * 2); ctx.fill();
+            (l as any)._y = y;
+          }
+          ctx.globalAlpha = 1;
+        }
+      });
+
+      // One light at a time gets a quiet check — a ring that grows and fades.
+      const period = 2600, idx = Math.floor(t / period) % lights.length, k = (t % period) / period;
+      const l = lights[idx] as any;
+      if (l._y !== undefined && k < 0.7) {
+        const kk = k / 0.7;
+        ctx.globalAlpha = (1 - kk) * 0.9; ctx.strokeStyle = C.light; ctx.lineWidth = 1.25;
+        ctx.beginPath(); ctx.arc(l.x * w, l._y, 4 + kk * 22, 0, Math.PI * 2); ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+    };
+
+    let raf = 0;
+    const loop = (t: number) => { draw(t); raf = requestAnimationFrame(loop); };
+    const start = () => { resize(); if (reduce) draw(900) ; else { cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); } };
+    start();
+    addEventListener('resize', start, { passive: true });
+    // Pause when off-screen so the tab stays cheap.
+    new IntersectionObserver((es) => es.forEach((e) => { if (reduce) return; if (e.isIntersecting) { cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); } else cancelAnimationFrame(raf); })).observe(canvas);
+  }
+</script>

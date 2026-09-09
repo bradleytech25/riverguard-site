@@ -1,0 +1,54 @@
+---
+/**
+ * Co-managed IT: for offices that already have an IT person or a small team.
+ * We add tooling and coverage; they keep the relationship. Support, not replace.
+ */
+import Button from './Button.astro';
+interface Props { id?: string }
+const { id = 'co-managed' } = Astro.props;
+const cols = [
+  {
+    title: 'Your IT person keeps',
+    items: ['Day-to-day help for staff', 'Knowing every user and every quirk', 'Decisions about what to buy and when', 'The relationship with your vendors'],
+  },
+  {
+    title: 'We add',
+    items: ['Monitoring, patching, and security tooling on every device, running 24/7', 'Backups that get tested, with the results in writing', 'A second set of hands for projects and rollouts', 'Cover when they’re sick, on vacation, or just underwater'],
+  },
+  {
+    title: 'Together',
+    items: ['A shared ticket queue, so nothing falls between us', 'A monthly review of what we saw and what we’d fix next', 'Clear lines: who owns what, written down', 'One number for your staff to call, either way'],
+  },
+];
+---
+<section class="section section-subtle" id={id}>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Already have IT?</p>
+      <h2>We work with your IT person, not around them.</h2>
+      <p class="lead">Plenty of offices have someone: a part-time tech, an office manager who’s good with computers, or a full-time IT lead who’s stretched thin. Co-managed IT means they keep the job and the local knowledge, and we bring the tooling and the coverage they don’t have time to build.</p>
+    </div>
+    <div class="grid grid-3 cols">
+      {cols.map((c) => (
+        <div class="col">
+          <h3>{c.title}</h3>
+          <ul>{c.items.map((i) => <li>{i}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+    <div class="foot">
+      <p>Every arrangement is different, so this is a starting point, not a package. We’ll sit down with you and your IT person together and write down who owns what.</p>
+      <Button href="/contact" variant="tertiary">Talk about co-managed IT</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .col { padding-top: var(--rg-space-5); border-top: 2px solid var(--rg-navy-900); }
+  .col h3 { font-size: var(--rg-text-xl); font-weight: var(--rg-weight-semibold); letter-spacing: 0; margin-bottom: var(--rg-space-4); }
+  .col ul { list-style: none; margin: 0; padding: 0; }
+  .col li { margin: 0; padding: var(--rg-space-2) 0 var(--rg-space-2) 1.25rem; position: relative; color: var(--rg-text); }
+  .col li::before { content: ''; position: absolute; left: 0; top: calc(var(--rg-space-2) + 0.7em); width: 0.5rem; height: 2px; background: var(--rg-teal-700); }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--rg-space-6); margin-top: var(--rg-space-12); padding-top: var(--rg-space-8); border-top: 1px solid var(--rg-border); }
+  .foot p { color: var(--rg-text-muted); max-width: 60ch; }
+</style>
