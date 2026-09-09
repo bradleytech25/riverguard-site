@@ -1,0 +1,25 @@
+---
+/**
+ * One real quote with a real name, role, and town. Rendered only once
+ * `business.testimonial` is set — an honest empty space beats a made-up quote.
+ */
+import { business } from '../data/business';
+const t = business.testimonial;
+---
+{t && (
+  <section class="section section-subtle">
+    <div class="container-tight">
+      <figure class="quote">
+        <blockquote><p>“{t.quote}”</p></blockquote>
+        <figcaption>{t.name}, {t.role} — {t.town}</figcaption>
+      </figure>
+    </div>
+  </section>
+)}
+
+<style>
+  .quote { margin: 0; }
+  blockquote { margin: 0; }
+  blockquote p { font-size: var(--rg-text-2xl); font-weight: var(--rg-weight-medium); color: var(--rg-text-strong); line-height: var(--rg-leading-snug); text-wrap: balance; max-width: none; }
+  figcaption { margin-top: var(--rg-space-6); color: var(--rg-text-muted); font-weight: var(--rg-weight-medium); }
+</style>

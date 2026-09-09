@@ -1,0 +1,27 @@
+---
+import Button from './Button.astro';
+import { business } from '../data/business';
+interface Props { title?: string; body?: string; label?: string; href?: string }
+const {
+  title = 'Let’s talk about your office.',
+  body = `A 30-minute walkthrough, no slide deck. ${business.owner} will tell you what he’d fix first — and if we’re not the right fit, he’ll say so.`,
+  label = 'Book a walkthrough',
+  href = '/contact',
+} = Astro.props;
+---
+<section class="section section-dark cta">
+  <div class="container inner">
+    <div>
+      <h2>{title}</h2>
+      <p class="lead">{body}</p>
+    </div>
+    <Button href={href} variant="on-dark">{label}</Button>
+  </div>
+</section>
+
+<style>
+  .cta { padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .inner { display: flex; align-items: center; justify-content: space-between; gap: var(--rg-space-10); }
+  .lead { margin-top: var(--rg-space-4); max-width: 50ch; }
+  @media (max-width: 767px) { .inner { flex-direction: column; align-items: flex-start; } }
+</style>

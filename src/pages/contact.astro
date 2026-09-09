@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Fact from '../components/Fact.astro';
+import { business, phoneHref, emailHref, serviceAreaSentence } from '../data/business';
+const hasForm = Boolean(business.formspreeId);
+---
+<Base
+  title="Contact"
+  description={`Talk to ${business.owner} at RiverGuard Solutions in Hailey, Idaho. Serving ${serviceAreaSentence}.`}
+  footerRidgeBg="var(--rg-bg-subtle)"
+>
+  <Hero
+    compact
+    eyebrow="Contact"
+    title={`Talk to ${business.owner}.`}
+    lead="Tell us what’s going on. You’ll get a real answer from a real person, usually the same day."
+    nextBg="var(--rg-bg-subtle)"
+  />
+
+  <section class="section section-subtle">
+    <div class="container layout">
+      <div class="form-col">
+        <ContactForm />
+      </div>
+
+      <aside class="details">
+        {hasForm && (
+          <div>
+            <h2 class="eyebrow">Reach us directly</h2>
+            <dl>
+              <div><dt>Phone</dt><dd><a href={phoneHref}><Fact value={business.phone} /></a></dd></div>
+              <div><dt>Email</dt><dd><a href={emailHref}><Fact value={business.email} /></a></dd></div>
+              <div><dt>Hours</dt><dd><Fact value={business.hours} /></dd></div>
+            </dl>
+          </div>
+        )}
+        <div>
+          <h2 class="eyebrow">Office</h2>
+          <p><Fact value={business.address.street} /><br />{business.address.city}, {business.address.state} {business.address.zip}</p>
+        </div>
+        <div>
+          <h2 class="eyebrow">Service area</h2>
+          <p>{serviceAreaSentence} — and everywhere in the {business.region} in between.</p>
+        </div>
+        <div>
+          <h2 class="eyebrow">Already a client?</h2>
+          <p>Use the icon on your desktop or call the number you have. It rings the same people.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .layout { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--rg-space-16); align-items: start; }
+  .details { display: grid; gap: var(--rg-space-8); }
+  .details .eyebrow { margin-bottom: var(--rg-space-3); }
+  .details dl { margin: 0; display: grid; gap: var(--rg-space-3); }
+  .details dt { font-size: var(--rg-text-sm); color: var(--rg-text-muted); }
+  .details dd { margin: 0; font-size: var(--rg-text-lg); }
+  .details p { color: var(--rg-text); }
+  @media (max-width: 1023px) { .layout { grid-template-columns: 1fr; gap: var(--rg-space-12); } }
+</style>

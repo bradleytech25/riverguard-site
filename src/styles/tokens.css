@@ -1,0 +1,172 @@
+/* ===========================================================================
+   RiverGuard Solutions — design tokens
+   Single source of truth for colour, type, space, radius, elevation, motion.
+   Colour anchors are sampled pixel-exact from the master logo artwork.
+   Every pairing marked "AA" was verified against WCAG 2.1 contrast maths.
+   =========================================================================== */
+
+:root {
+  /* --- Brand anchors (do not redefine) ---------------------------------- */
+  --rg-brand-navy:  #042146;   /* shield body        */
+  --rg-brand-teal:  #016284;   /* river water        */
+  --rg-brand-stone: #595B60;   /* "SOLUTIONS" rule   */
+
+  /* --- Navy ramp --------------------------------------------------------- */
+  --rg-navy-50:  #F2F6FB;
+  --rg-navy-100: #DEE9F6;
+  --rg-navy-200: #BAD3EC;
+  --rg-navy-300: #8AB3DD;
+  --rg-navy-400: #5590CB;
+  --rg-navy-500: #2C6DB5;
+  --rg-navy-600: #1A559C;
+  --rg-navy-700: #114281;
+  --rg-navy-800: #0A3164;
+  --rg-navy-900: #042146;   /* = brand navy */
+  --rg-navy-950: #02101F;
+
+  /* --- Teal ramp --------------------------------------------------------- */
+  --rg-teal-50:  #F0FAFD;
+  --rg-teal-100: #DCF2F9;
+  --rg-teal-200: #B4E3F2;
+  --rg-teal-300: #7CCBE6;
+  --rg-teal-400: #3FB0D6;
+  --rg-teal-500: #1394BF;
+  --rg-teal-600: #0A7BA3;
+  --rg-teal-700: #016284;   /* = brand teal */
+  --rg-teal-800: #014C67;
+  --rg-teal-900: #023445;
+
+  /* --- Stone ramp (neutrals) --------------------------------------------- */
+  --rg-stone-0:   #FFFFFF;
+  --rg-stone-50:  #F7F8F9;
+  --rg-stone-100: #EFF0F2;
+  --rg-stone-200: #DFE1E4;
+  --rg-stone-300: #C2C5CA;
+  --rg-stone-400: #8E9197;  /* lightest grey that clears 3:1 on white */
+  --rg-stone-500: #6E7177;
+  --rg-stone-600: #595B60;  /* = brand stone */
+  --rg-stone-700: #43464B;
+  --rg-stone-800: #303338;
+  --rg-stone-900: #202226;
+  --rg-stone-950: #131417;
+
+  /* --- Signal (restricted warm accent — see usage rules) ------------------ */
+  --rg-signal-50:  #FDF6EB;
+  --rg-signal-100: #FBE7C9;
+  --rg-signal-200: #F5CB92;
+  --rg-signal-300: #EDA94F;
+  --rg-signal-400: #DB8B21;
+  --rg-signal-500: #BC6F0E;
+  --rg-signal-600: #99570B;  /* only Signal step allowed behind white text */
+  --rg-signal-700: #79450D;
+  --rg-signal-800: #5E370F;
+  --rg-signal-900: #4A2C10;
+
+  /* --- Status ------------------------------------------------------------ */
+  --rg-ok-50:  #EFF9F2;  --rg-ok-100: #DCF2E4;
+  --rg-ok-500: #1F8A4C;  --rg-ok-600: #166B3B;  --rg-ok-700: #12542F;
+  --rg-warn-50:#FDF6E9;  --rg-warn-100:#FBEBCF;
+  --rg-warn-500:#B4740C; --rg-warn-600:#8F5B08; --rg-warn-700:#6F4707;
+  --rg-danger-50:#FDEEED; --rg-danger-100:#FADCDA;
+  --rg-danger-500:#C0332C; --rg-danger-600:#9E2721; --rg-danger-700:#7C1E19;
+
+  /* --- Semantic: light surfaces ------------------------------------------ */
+  --rg-bg:              var(--rg-stone-0);
+  --rg-bg-subtle:       var(--rg-stone-50);
+  --rg-bg-muted:        var(--rg-stone-100);
+  --rg-bg-brand-tint:   var(--rg-teal-50);
+  --rg-surface:         var(--rg-stone-0);
+  --rg-surface-raised:  var(--rg-stone-0);
+
+  --rg-text:            var(--rg-stone-800);   /* AA 12.7:1 on white */
+  --rg-text-strong:     var(--rg-navy-900);    /* AA 16.0:1 — headings */
+  --rg-text-muted:      var(--rg-stone-600);   /* AA  6.8:1 on white */
+  --rg-text-faint:      var(--rg-stone-500);   /* AA  4.9:1 white / 4.6:1 on subtle */
+  --rg-text-on-fill:    var(--rg-stone-0);
+
+  --rg-link:            var(--rg-teal-700);    /* AA 6.8:1 on white */
+  --rg-link-hover:      var(--rg-teal-800);
+
+  --rg-border:          var(--rg-stone-200);
+  --rg-border-strong:   var(--rg-stone-300);
+  --rg-focus:           var(--rg-teal-700);
+
+  /* --- Semantic: dark surfaces (navy sections, footers, dashboards) ------- */
+  --rg-dark-bg:         var(--rg-navy-900);
+  --rg-dark-surface:    var(--rg-navy-800);
+  --rg-dark-text:       var(--rg-stone-0);     /* AA 16.0:1 */
+  --rg-dark-text-muted: var(--rg-navy-200);    /* AA 10.4:1 */
+  --rg-dark-text-faint: var(--rg-navy-300);    /* AA  7.3:1 */
+  --rg-dark-link:       var(--rg-teal-300);    /* AA  8.8:1 — never teal-700 here */
+  --rg-dark-border:     #143459;
+
+  /* --- Type -------------------------------------------------------------- */
+  --rg-font-sans: "Fira Sans", "Segoe UI", system-ui, -apple-system,
+                  "Helvetica Neue", Arial, sans-serif;
+  --rg-font-mono: "Fira Mono", ui-monospace, SFMono-Regular, Menlo,
+                  Consolas, monospace;
+  --rg-font-condensed: "Fira Sans Condensed", "Fira Sans", "Segoe UI",
+                  system-ui, sans-serif;
+
+  --rg-weight-regular: 400;
+  --rg-weight-medium:  500;
+  --rg-weight-semibold:600;
+  --rg-weight-bold:    700;
+
+  --rg-text-xs:   0.75rem;    /* 12 — legal, table meta          */
+  --rg-text-sm:   0.875rem;   /* 14 — captions, labels           */
+  --rg-text-base: 1.0625rem;  /* 17 — body                       */
+  --rg-text-lg:   1.1875rem;  /* 19 — lead paragraph             */
+  --rg-text-xl:   1.375rem;   /* 22 — card titles, h4            */
+  --rg-text-2xl:  1.75rem;    /* 28 — h3                         */
+  --rg-text-3xl:  2.25rem;    /* 36 — h2                         */
+  --rg-text-4xl:  3rem;       /* 48 — h1                         */
+  --rg-text-5xl:  3.75rem;    /* 60 — hero                       */
+  --rg-text-6xl:  4.5rem;     /* 72 — display                    */
+
+  --rg-leading-display: 1.06;
+  --rg-leading-tight:   1.2;
+  --rg-leading-snug:    1.4;
+  --rg-leading-body:    1.6;
+  --rg-leading-loose:   1.75;
+
+  --rg-tracking-display: -0.02em;
+  --rg-tracking-heading: -0.01em;
+  --rg-tracking-body:     0;
+  --rg-tracking-eyebrow:  0.12em;   /* uppercase eyebrows / overlines */
+  --rg-tracking-lockup:   0.345em;  /* the "S O L U T I O N S" rule   */
+
+  --rg-measure: 68ch;   /* max line length for body copy */
+
+  /* --- Space (4px base) --------------------------------------------------- */
+  --rg-space-1: 0.25rem;  --rg-space-2: 0.5rem;   --rg-space-3: 0.75rem;
+  --rg-space-4: 1rem;     --rg-space-5: 1.25rem;  --rg-space-6: 1.5rem;
+  --rg-space-8: 2rem;     --rg-space-10:2.5rem;   --rg-space-12:3rem;
+  --rg-space-16:4rem;     --rg-space-20:5rem;     --rg-space-24:6rem;
+  --rg-space-32:8rem;
+
+  --rg-section-y:       clamp(4rem, 9vw, 8rem);   /* vertical section rhythm */
+  --rg-container:       76rem;                    /* 1216px content width    */
+  --rg-container-tight: 46rem;                    /* long-form reading width */
+  --rg-gutter:          clamp(1.25rem, 4vw, 2.5rem);
+
+  /* --- Radius ------------------------------------------------------------- */
+  --rg-radius-xs: 2px;  --rg-radius-sm: 4px;  --rg-radius-md: 8px;
+  --rg-radius-lg: 12px; --rg-radius-xl: 20px; --rg-radius-full: 999px;
+
+  /* --- Elevation (navy-tinted, never neutral black) ----------------------- */
+  --rg-shadow-sm: 0 1px 2px rgba(4,33,70,.06), 0 1px 1px rgba(4,33,70,.04);
+  --rg-shadow-md: 0 2px 4px rgba(4,33,70,.06), 0 4px 12px rgba(4,33,70,.08);
+  --rg-shadow-lg: 0 4px 8px rgba(4,33,70,.06), 0 12px 32px rgba(4,33,70,.10);
+  --rg-shadow-focus: 0 0 0 3px rgba(1,98,132,.35);
+
+  /* --- Motion -------------------------------------------------------------- */
+  --rg-ease:       cubic-bezier(.2,.7,.3,1);
+  --rg-duration-1: 120ms;   /* hover, focus            */
+  --rg-duration-2: 200ms;   /* dropdowns, tooltips     */
+  --rg-duration-3: 320ms;   /* panels, page transitions*/
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --rg-duration-1: 0ms; --rg-duration-2: 0ms; --rg-duration-3: 0ms; }
+}

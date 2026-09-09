@@ -1,0 +1,87 @@
+---
+import Button from './Button.astro';
+import { business } from '../data/business';
+const nav = [
+  { href: '/services', label: 'Services' },
+  { href: '/industries/medical-practices', label: 'Who we serve' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href.startsWith('/industries') ? path.startsWith('/industries') : path === href);
+---
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="logo" aria-label={`${business.name} — home`}>
+      <img src="/brand/riverguard-logo-horizontal.svg" alt={business.name} width="1164" height="429" />
+    </a>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="visually-hidden">Menu</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <path class="i-open" d="M4 7h16M4 12h16M4 17h16"/>
+        <path class="i-close" d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <ul>
+        {nav.map((n) => (
+          <li><a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+      </ul>
+      <Button href="/contact" variant="secondary" class="nav-cta">Talk to {business.owner}</Button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { background: var(--rg-bg); border-bottom: 1px solid var(--rg-border); position: relative; z-index: 20; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: var(--rg-space-8); min-height: 88px; }
+  .logo { display: inline-flex; padding-block: var(--rg-space-4); border-radius: var(--rg-radius-xs); }
+  .logo img { height: 60px; width: auto; }
+  .nav { display: flex; align-items: center; gap: var(--rg-space-8); }
+  .nav ul { display: flex; gap: var(--rg-space-6); list-style: none; margin: 0; padding: 0; }
+  .nav li + li { margin: 0; }
+  .nav a:not(.btn) {
+    display: inline-block; padding: var(--rg-space-2) 0;
+    color: var(--rg-text-strong); text-decoration: none; font-weight: var(--rg-weight-medium);
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--rg-duration-1) var(--rg-ease), color var(--rg-duration-1) var(--rg-ease);
+  }
+  .nav a:not(.btn):hover { color: var(--rg-teal-700); }
+  .nav a[aria-current="page"] { border-bottom-color: var(--rg-teal-700); color: var(--rg-teal-700); }
+  .menu-btn { display: none; }
+
+  @media (max-width: 1023px) {
+    .menu-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border: 1px solid var(--rg-border-strong); border-radius: var(--rg-radius-sm);
+      background: transparent; color: var(--rg-text-strong); cursor: pointer;
+    }
+    .menu-btn .i-close { display: none; }
+    .menu-btn[aria-expanded="true"] .i-open { display: none; }
+    .menu-btn[aria-expanded="true"] .i-close { display: block; }
+    .nav {
+      display: none; position: absolute; left: 0; right: 0; top: 100%;
+      flex-direction: column; align-items: stretch; gap: var(--rg-space-4);
+      padding: var(--rg-space-4) var(--rg-gutter) var(--rg-space-6);
+      background: var(--rg-bg); border-bottom: 1px solid var(--rg-border); box-shadow: var(--rg-shadow-md);
+    }
+    .nav.open { display: flex; }
+    .nav ul { flex-direction: column; gap: 0; }
+    .nav a:not(.btn) { display: block; padding: var(--rg-space-3) 0; border-bottom: 1px solid var(--rg-border); font-size: var(--rg-text-lg); }
+    .nav a[aria-current="page"] { border-bottom-color: var(--rg-border); }
+  }
+  @media (max-width: 479px) { .logo img { height: 48px; } .bar { min-height: 76px; } }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
+  const nav = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('open', !open);
+  });
+</script>

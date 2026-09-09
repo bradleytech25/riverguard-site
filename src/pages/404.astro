@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+---
+<Base title="Page not found" description="That page isn’t here." footerRidgeBg="var(--rg-bg)">
+  <section class="section">
+    <div class="container-tight">
+      <p class="eyebrow">404</p>
+      <h1>That page isn’t here.</h1>
+      <p class="lead">The link may be old, or the address may have a typo. Either way, everything worth reading is one click away.</p>
+      <div class="actions">
+        <Button href="/" variant="primary">Back to the home page</Button>
+        <Button href="/contact" variant="tertiary">Contact us</Button>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .eyebrow { margin-bottom: var(--rg-space-3); }
+  .lead { margin-top: var(--rg-space-5); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--rg-space-4); margin-top: var(--rg-space-10); }
+</style>

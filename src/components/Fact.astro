@@ -1,0 +1,7 @@
+---
+/** Renders a business fact; highlights it if it is still a [PLACEHOLDER]. */
+import { isPlaceholder } from '../data/business';
+interface Props { value: string }
+const { value } = Astro.props;
+---
+{isPlaceholder(value) ? <span class="todo" title="Placeholder — fill in src/data/business.ts">{value}</span> : value}

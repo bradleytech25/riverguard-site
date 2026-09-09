@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { industries } from '../../data/industries';
+import { business } from '../../data/business';
+
+export function getStaticPaths() {
+  return industries.map((i) => ({ params: { slug: i.slug }, props: { industry: i } }));
+}
+const { industry } = Astro.props;
+const others = industries.filter((i) => i.slug !== industry.slug);
+---
+<Base title={industry.name} description={industry.seoDescription} footerRidgeBg="var(--rg-navy-900)">
+  <Hero
+    compact
+    eyebrow={industry.eyebrow}
+    title={industry.headline}
+    lead={industry.intro}
+    cta={{ label: industry.cta, href: '/contact' }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What gets in the way</p>
+        <h2>The problems we hear about most.</h2>
+      </div>
+      <div class="grid grid-3">
+        {industry.pains.map((p) => (
+          <article class="card">
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container two">
+      <div class="section-head">
+        <p class="eyebrow">What we do about it</p>
+        <h2>Specifically.</h2>
+        <p class="lead">{industry.proofLine}</p>
+      </div>
+      <ul class="does">
+        {industry.whatWeDo.map((d) => <li>{d}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Also</p>
+        <h2>Not quite you?</h2>
+      </div>
+      <ul class="others">
+        {others.map((o) => <li><a href={`/industries/${o.slug}`}>{o.name} <span aria-hidden="true">→</span></a></li>)}
+        <li><a href="/services">All services <span aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand label={industry.cta} body={`${business.owner} will come to your office, look at what you have, and tell you what he’d fix first. If we’re not the right fit, he’ll say so.`} />
+</Base>
+
+<style>
+  .card h3 { font-size: var(--rg-text-xl); font-weight: var(--rg-weight-semibold); letter-spacing: 0; }
+  .two { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--rg-space-12); align-items: start; }
+  .two .section-head { margin-bottom: 0; }
+  .does { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--rg-space-4); }
+  .does li { margin: 0; padding: var(--rg-space-4) var(--rg-space-5) var(--rg-space-4) calc(var(--rg-space-5) + 1.5rem); background: var(--rg-stone-0); border: 1px solid var(--rg-border); border-radius: var(--rg-radius-sm); position: relative; }
+  .does li::before { content: ''; position: absolute; left: var(--rg-space-5); top: calc(var(--rg-space-4) + 0.6em); width: 0.75rem; height: 2px; background: var(--rg-teal-700); }
+  .others { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--rg-space-4); }
+  .others li { margin: 0; }
+  .others a { display: inline-block; padding: var(--rg-space-3) var(--rg-space-5); border: 1px solid var(--rg-border-strong); border-radius: var(--rg-radius-sm); text-decoration: none; font-weight: var(--rg-weight-semibold); }
+  .others a:hover { border-color: var(--rg-teal-700); background: var(--rg-teal-50); }
+  @media (max-width: 1023px) { .two { grid-template-columns: 1fr; } }
+</style>

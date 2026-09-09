@@ -1,0 +1,26 @@
+---
+import Fact from './Fact.astro';
+import { business } from '../data/business';
+---
+<section class="proof" aria-label="By the numbers">
+  <div class="container">
+    <dl>
+      {business.stats.map((s) => (
+        <div>
+          <dd><Fact value={s.value} /></dd>
+          <dt>{s.label}</dt>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .proof { padding-block: var(--rg-space-12); border-bottom: 1px solid var(--rg-border); }
+  dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--rg-space-8); margin: 0; }
+  dl > div { display: flex; flex-direction: column-reverse; gap: var(--rg-space-2); }
+  dd { margin: 0; font-size: var(--rg-text-3xl); font-weight: var(--rg-weight-bold); color: var(--rg-text-strong); letter-spacing: var(--rg-tracking-heading); font-variant-numeric: tabular-nums; line-height: 1; }
+  dt { font-size: var(--rg-text-sm); font-weight: var(--rg-weight-semibold); letter-spacing: var(--rg-tracking-eyebrow); text-transform: uppercase; color: var(--rg-text-muted); }
+  @media (max-width: 1023px) { dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 479px) { dl { grid-template-columns: 1fr; } dd { font-size: var(--rg-text-2xl); } }
+</style>

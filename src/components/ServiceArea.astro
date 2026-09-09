@@ -1,0 +1,17 @@
+---
+import { business } from '../data/business';
+---
+<div class="area">
+  <ul class="towns" aria-label="Towns we serve">
+    {business.serviceArea.map((t) => <li>{t}</li>)}
+  </ul>
+  <p>We’re based in {business.address.city}. Everywhere on this list is a short drive, and so is everywhere in between — if you’re in the {business.region}, you’re in our service area.</p>
+</div>
+
+<style>
+  .area { display: grid; grid-template-columns: 1fr 1fr; gap: var(--rg-space-8); align-items: start; }
+  .towns { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--rg-space-3); }
+  .towns li { margin: 0; padding: var(--rg-space-4) var(--rg-space-5); background: var(--rg-stone-0); border: 1px solid var(--rg-border); border-radius: var(--rg-radius-sm); font-weight: var(--rg-weight-semibold); color: var(--rg-text-strong); }
+  .area p { color: var(--rg-text-muted); font-size: var(--rg-text-lg); }
+  @media (max-width: 767px) { .area { grid-template-columns: 1fr; } }
+</style>

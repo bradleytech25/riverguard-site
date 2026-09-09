@@ -1,0 +1,30 @@
+---
+import { services } from '../data/services';
+interface Props { showLink?: boolean }
+const { showLink = true } = Astro.props;
+---
+<div class="grid grid-2">
+  {services.map((s) => (
+    <article class="card" id={showLink ? undefined : s.slug}>
+      <h3>{s.name}</h3>
+      <p class="promise">{s.promise}</p>
+      {showLink ? (
+        <a class="more" href={`/services#${s.slug}`}>What’s included <span aria-hidden="true">→</span></a>
+      ) : (
+        <>
+          <p>{s.detail}</p>
+          <ul>{s.bullets.map((b) => <li>{b}</li>)}</ul>
+        </>
+      )}
+    </article>
+  ))}
+</div>
+
+<style>
+  .card h3 { font-size: var(--rg-text-xl); font-weight: var(--rg-weight-semibold); letter-spacing: 0; }
+  .promise { color: var(--rg-text); font-size: var(--rg-text-lg); }
+  .promise + p { margin-top: var(--rg-space-4); }
+  .more { display: inline-block; margin-top: var(--rg-space-5); font-weight: var(--rg-weight-semibold); text-decoration: none; }
+  .more:hover { text-decoration: underline; }
+  article { scroll-margin-top: var(--rg-space-8); }
+</style>

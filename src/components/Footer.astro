@@ -1,0 +1,68 @@
+---
+import Ridgeline from './Ridgeline.astro';
+import Fact from './Fact.astro';
+import { business, phoneHref, emailHref, serviceAreaSentence } from '../data/business';
+import { services } from '../data/services';
+import { industries } from '../data/industries';
+interface Props { ridgeBg?: string }
+const { ridgeBg = 'var(--rg-bg)' } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <Ridgeline flip bg={ridgeBg} />
+  <div class="footer-body">
+    <div class="container cols">
+      <div class="brand">
+        <a href="/" aria-label={`${business.name} — home`}>
+          <img src="/brand/riverguard-logo-horizontal-reversed.svg" alt={business.name} width="1164" height="429" />
+        </a>
+        <p>{business.tagline}. Based in {business.address.city}, Idaho, and on the road across the {business.region}.</p>
+      </div>
+
+      <nav aria-label="Services">
+        <h2 class="eyebrow">Services</h2>
+        <ul>
+          {services.map((s) => <li><a href={`/services#${s.slug}`}>{s.name}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav aria-label="Who we serve">
+        <h2 class="eyebrow">Who we serve</h2>
+        <ul>
+          {industries.map((i) => <li><a href={`/industries/${i.slug}`}>{i.name}</a></li>)}
+          <li><a href="/about">About us</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="eyebrow">Contact</h2>
+        <ul class="contact">
+          <li><a href={phoneHref}><Fact value={business.phone} /></a></li>
+          <li><a href={emailHref}><Fact value={business.email} /></a></li>
+          <li><Fact value={business.address.street} />, {business.address.city}, {business.address.state} {business.address.zip}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container legal">
+      <p>© {year} {business.legalName}. Serving {serviceAreaSentence}.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-body { background: var(--rg-dark-bg); color: var(--rg-dark-text-muted); padding-block: var(--rg-space-12) var(--rg-space-8); }
+  .cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--rg-space-10) var(--rg-space-8); }
+  .brand img { height: 52px; width: auto; }
+  .brand p { margin-top: var(--rg-space-5); max-width: 34ch; }
+  .eyebrow { color: var(--rg-teal-300); margin-bottom: var(--rg-space-4); font-size: var(--rg-text-sm); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li + li { margin-top: var(--rg-space-3); }
+  a { color: var(--rg-dark-text); text-decoration: none; }
+  a:hover { color: var(--rg-teal-300); text-decoration: underline; }
+  .contact li { color: var(--rg-dark-text-muted); }
+  .legal { margin-top: var(--rg-space-12); padding-top: var(--rg-space-6); border-top: 1px solid var(--rg-dark-border); }
+  .legal p { font-size: var(--rg-text-sm); color: var(--rg-dark-text-faint); max-width: none; }
+  @media (max-width: 1023px) { .cols { grid-template-columns: 1fr 1fr; } .brand { grid-column: 1 / -1; } }
+  @media (max-width: 479px) { .cols { grid-template-columns: 1fr; } }
+</style>

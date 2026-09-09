@@ -1,0 +1,25 @@
+{
+  "name": "riverguard-site",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync-brand": "bash scripts/sync-brand.sh",
+    "deploy": "bash scripts/deploy.sh",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.2"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "private": true
+}

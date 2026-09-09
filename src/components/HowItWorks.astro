@@ -1,0 +1,35 @@
+---
+import { business } from '../data/business';
+const steps = [
+  {
+    title: 'We come and look',
+    body: `${business.owner} visits your office, listens to what slows you down, and looks at what you actually have. No sales deck. You get a short written summary of what we found and what we’d fix first.`,
+  },
+  {
+    title: 'We set the baseline',
+    body: 'Every computer gets the monitoring agent and security protection, updates get a schedule, backups get tested, and MFA gets turned on properly. Most of this happens in the first two weeks, mostly after hours.',
+  },
+  {
+    title: 'We keep it running',
+    body: 'From then on we watch, patch, and answer the phone. You get a monthly note in plain English about what we did and what we saw. When something breaks, you call one number and it’s ours.',
+  },
+];
+---
+<ol class="steps">
+  {steps.map((s, i) => (
+    <li>
+      <span class="num mono" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+      <h3>{s.title}</h3>
+      <p>{s.body}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--rg-space-10) var(--rg-space-8); counter-reset: step; }
+  .steps li { margin: 0; padding-top: var(--rg-space-5); border-top: 2px solid var(--rg-teal-700); }
+  .num { display: block; color: var(--rg-teal-700); font-size: var(--rg-text-sm); letter-spacing: 0.08em; margin-bottom: var(--rg-space-3); }
+  h3 { font-size: var(--rg-text-xl); font-weight: var(--rg-weight-semibold); letter-spacing: 0; margin-bottom: var(--rg-space-3); }
+  p { color: var(--rg-text-muted); }
+  @media (max-width: 767px) { .steps { grid-template-columns: 1fr; gap: var(--rg-space-8); } }
+</style>

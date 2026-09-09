@@ -1,0 +1,27 @@
+---
+import { industries, alsoServe } from '../data/industries';
+const also = [...alsoServe];
+const lastAlso = also.pop();
+---
+<div class="grid grid-3">
+  {industries.map((i) => (
+    <a class="card tile" href={`/industries/${i.slug}`}>
+      <p class="eyebrow">{i.eyebrow}</p>
+      <h3>{i.name}</h3>
+      <p>{i.headline}</p>
+      <span class="more">See how we help <span aria-hidden="true">→</span></span>
+    </a>
+  ))}
+</div>
+<p class="also">We also look after {also.join(', ')}, and {lastAlso} across the valley. If you run a small business here, we can probably help.</p>
+
+<style>
+  .tile { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+  .tile .eyebrow { margin-bottom: var(--rg-space-3); font-size: var(--rg-text-xs); }
+  .tile h3 { font-size: var(--rg-text-xl); font-weight: var(--rg-weight-semibold); letter-spacing: 0; }
+  .tile p:not(.eyebrow) { color: var(--rg-text-muted); flex: 1; }
+  .tile:hover h3 { color: var(--rg-teal-700); }
+  .more { display: inline-block; margin-top: var(--rg-space-5); color: var(--rg-link); font-weight: var(--rg-weight-semibold); }
+  .tile:hover .more { text-decoration: underline; }
+  .also { margin-top: var(--rg-space-10); color: var(--rg-text-muted); }
+</style>

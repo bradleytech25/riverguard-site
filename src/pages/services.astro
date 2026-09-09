@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { wontDo } from '../data/services';
+import { business } from '../data/business';
+---
+<Base
+  title="Services"
+  description="Managed IT, 24/7 managed security, help desk, and on-site service for small businesses in the Wood River Valley. Plain names, plain prices, no vendor name-dropping."
+  footerRidgeBg="var(--rg-navy-900)"
+>
+  <Hero
+    compact
+    eyebrow="Services"
+    title="Everything your office needs from IT. Nothing it doesn’t."
+    lead="Four services, described in the words you’d use yourself. We describe tools by what they do for you — not by brand name — because that’s the part that matters."
+    cta={{ label: 'Get a quote', href: '/contact' }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <ServiceCards showLink={false} />
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How we work</p>
+        <h2>What we won’t do.</h2>
+        <p class="lead">Trust is built by limits. Here are ours.</p>
+      </div>
+      <ul class="wont">
+        {wontDo.map((w) => <li>{w}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-tight prose">
+      <p class="eyebrow">Pricing</p>
+      <h2>One monthly number.</h2>
+      <p>Managed IT and security is priced per person, per month, so the bill scales with your business and not with how many times something broke. On-site projects — a new office, a server move — are quoted up front before any work starts.</p>
+      <p>We don’t publish a rate card because every office is different, but {business.owner} will give you a real number at the end of a walkthrough, not a “starting from”.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Want the number for your office?" label="Get a quote" />
+</Base>
+
+<style>
+  .wont { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--rg-space-6); }
+  .wont li { margin: 0; padding: var(--rg-space-6); background: var(--rg-stone-0); border: 1px solid var(--rg-border); border-radius: var(--rg-radius-md); position: relative; padding-left: calc(var(--rg-space-6) + 1.5rem); color: var(--rg-text); }
+  .wont li::before { content: ''; position: absolute; left: var(--rg-space-6); top: calc(var(--rg-space-6) + 0.6em); width: 0.75rem; height: 2px; background: var(--rg-danger-600); }
+  @media (max-width: 767px) { .wont { grid-template-columns: 1fr; } }
+</style>

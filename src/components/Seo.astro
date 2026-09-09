@@ -1,0 +1,55 @@
+---
+import { business, isPlaceholder } from '../data/business';
+interface Props {
+  title: string;
+  description: string;
+  /** Include LocalBusiness structured data (home page only). */
+  localBusiness?: boolean;
+}
+const { title, description, localBusiness = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '') || Astro.site!.href;
+const fullTitle = title === business.name ? `${business.name} — ${business.tagline}` : `${title} — ${business.name}`;
+const ogImage = new URL('/og-image.png', Astro.site).href;
+
+const jsonLd = localBusiness && {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: business.name,
+  legalName: business.legalName,
+  description: business.description,
+  url: business.url,
+  image: ogImage,
+  logo: new URL('/brand/riverguard-logo-horizontal.svg', Astro.site).href,
+  ...(isPlaceholder(business.phone) ? {} : { telephone: business.phone }),
+  ...(isPlaceholder(business.email) ? {} : { email: business.email }),
+  address: {
+    '@type': 'PostalAddress',
+    ...(isPlaceholder(business.address.street) ? {} : { streetAddress: business.address.street }),
+    addressLocality: business.address.city,
+    addressRegion: business.address.state,
+    postalCode: business.address.zip,
+    addressCountry: 'US',
+  },
+  areaServed: [
+    ...business.serviceArea.map((t) => ({ '@type': 'City', name: `${t}, Idaho` })),
+    { '@type': 'Place', name: 'Wood River Valley, Idaho' },
+  ],
+  knowsAbout: ['Managed IT services', 'Managed detection and response', 'Cybersecurity for small business', 'HIPAA compliance', 'Microsoft 365'],
+};
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={business.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

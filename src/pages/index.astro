@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import WhoWeServe from '../components/WhoWeServe.astro';
+import ServiceArea from '../components/ServiceArea.astro';
+import Testimonial from '../components/Testimonial.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { business } from '../data/business';
+---
+<Base
+  title={business.name}
+  description={`Managed IT and 24/7 security for small businesses in Idaho’s Wood River Valley. Based in Hailey, serving Bellevue, Carey, Picabo, Sun Valley, and Ketchum. ${business.yearsLocal}+ years local.`}
+  localBusiness
+  footerRidgeBg="var(--rg-navy-900)"
+>
+  <Hero
+    eyebrow={`Hailey, Idaho · ${business.yearsLocal}+ years in the valley`}
+    title="IT that just works, from people down the road."
+    lead="We keep small businesses in the Wood River Valley running: computers patched and watched around the clock, a security team on duty 24/7, and a person you know who answers the phone."
+    cta={{ label: 'Book a walkthrough', href: '/contact' }}
+    secondary={{ label: 'See what we do', href: '/services' }}
+  />
+
+  <ProofStrip />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Four things, done properly.</h2>
+        <p class="lead">Not a menu of forty line items. The four things a small business actually needs from its IT provider, each one done the way we’d want it done for ourselves.</p>
+      </div>
+      <ServiceCards />
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps, and then we’re just… there.</h2>
+        <p class="lead">Getting started shouldn’t feel like a project. It’s a visit, a couple of weeks of quiet setup, and then a phone number that’s always yours.</p>
+      </div>
+      <HowItWorks />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Who we serve</p>
+        <h2>Small businesses that can’t afford a bad IT day.</h2>
+        <p class="lead">We work with the offices that keep the valley running. A few of them have needs specific enough that we wrote them up.</p>
+      </div>
+      <WhoWeServe />
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Where we are</p>
+        <h2>Based in Hailey. On the road across the valley.</h2>
+      </div>
+      <ServiceArea />
+    </div>
+  </section>
+
+  <Testimonial />
+
+  <CtaBand />
+</Base>

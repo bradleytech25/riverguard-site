@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Fact from '../components/Fact.astro';
+import { business, serviceAreaSentence } from '../data/business';
+---
+<Base
+  title="About"
+  description={`RiverGuard Solutions is a Hailey, Idaho IT provider with ${business.yearsLocal}+ years in the Wood River Valley. Small-business focus, plain English, and a person who answers.`}
+  footerRidgeBg="var(--rg-navy-900)"
+>
+  <Hero
+    compact
+    eyebrow="About"
+    title={`${business.yearsLocal} years in the valley. Still answering the phone.`}
+    lead="RiverGuard Solutions is a small, local IT company for small, local businesses. We live here, we shop here, and our clients are our neighbours."
+    cta={{ label: `Talk to ${business.owner}`, href: '/contact' }}
+  />
+
+  <section class="section">
+    <div class="container-tight prose">
+      <h2>Why we exist</h2>
+      <p>Most IT for small business comes from one of two places: a national helpdesk that treats you as a ticket number, or a friend-of-a-friend who’s good with computers until the day he isn’t available. Neither is what a medical practice, a highway district, or a non-profit actually needs.</p>
+      <p>We started RiverGuard Solutions to be the third option — a proper managed IT provider, with the 24/7 monitoring and security tooling the national firms have, run by people who are twenty minutes away and know your name.</p>
+
+      <h2>Small business, on purpose</h2>
+      <p>We don’t chase enterprise contracts. Our clients have somewhere between two and fifty people, one or two locations, and no time for IT to be a project. That focus is why we can promise the things we promise: we’re set up for offices like yours, not scaled down from something bigger.</p>
+      <p>The goal isn’t just to keep your computers working. It’s to make sure technology is the thing you think about least, so you can spend your day on the business you actually run.</p>
+
+      <h2>Local for {business.yearsLocal}+ years</h2>
+      <p>We’re based in {business.address.city} and we serve {serviceAreaSentence} — the whole {business.region}. That matters more than it sounds. It means on-site help is a drive, not a dispatch. It means we know which buildings have terrible cell coverage and which ISP is having a bad week. And it means our reputation is local too, which is the best incentive we know of to do the job right.</p>
+
+      <h2>How we act</h2>
+      <ul>
+        <li><strong>Plain English.</strong> If you didn’t understand the explanation, we didn’t finish the job.</li>
+        <li><strong>Numbers, not adjectives.</strong> You’ll get response times and restore-test results, not “fast” and “secure”.</li>
+        <li><strong>No fear.</strong> We’ll state a risk once, plainly, and spend the rest of the conversation on the fix.</li>
+        <li><strong>Say what we won’t do.</strong> If something is out of scope or not worth your money, we’ll tell you.</li>
+      </ul>
+
+      <h2>Credentials</h2>
+      <p>The tools matter less than the people running them, but the people should be qualified. Certifications held by our team:</p>
+      <ul>
+        {business.certifications.map((c) => <li><Fact value={c} /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand title="Come meet us, or we’ll come to you." body={`A cup of coffee in ${business.address.city}, or a walkthrough at your office. Either way, no slide deck.`} label="Book a walkthrough" />
+</Base>

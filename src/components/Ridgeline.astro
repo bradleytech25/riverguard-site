@@ -1,0 +1,20 @@
+---
+/**
+ * The ridgeline motif — the logo's mountain silhouette as a section edge.
+ * This is the ONE motif used on this site (no river curve). Keep it subtle.
+ *
+ * `fill` is the colour of the mountains; `bg` is the colour behind them.
+ * Default draws navy mountains descending into the page background
+ * (use under a navy hero). `flip` turns it over for the top of a navy footer.
+ */
+interface Props { fill?: string; bg?: string; flip?: boolean }
+const { fill = 'var(--rg-navy-900)', bg = 'transparent', flip = false } = Astro.props;
+---
+<svg class:list={['ridge', { flip }]} viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" style={`color:${fill};background:${bg}`}>
+  <path fill="currentColor" d="M0 0h1200v14l-118 21-96-13-142 24-131-19-152 26-118-16-145 20-98-13-100 16z"/>
+</svg>
+
+<style>
+  .ridge { display: block; width: 100%; height: clamp(24px, 4vw, 56px); }
+  .ridge.flip { transform: scaleY(-1); }
+</style>

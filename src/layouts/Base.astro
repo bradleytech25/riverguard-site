@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props {
+  title: string;
+  description: string;
+  localBusiness?: boolean;
+  /** Background of the last section before the footer, so the footer ridgeline sits on it. */
+  footerRidgeBg?: string;
+}
+const { title, description, localBusiness = false, footerRidgeBg } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#042146" />
+    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="icon" href="/brand/favicon-16.svg" type="image/svg+xml" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/brand/favicon-180.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Mono:wght@400;500&display=swap" />
+    <Seo title={title} description={description} localBusiness={localBusiness} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer ridgeBg={footerRidgeBg} />
+  </body>
+</html>

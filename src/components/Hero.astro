@@ -1,0 +1,49 @@
+---
+/**
+ * Navy hero: one plain-English promise, ONE Signal CTA, one supporting line.
+ * No carousel, no video, no stock photo. The ridgeline below is the page's motif.
+ */
+import Button from './Button.astro';
+import Ridgeline from './Ridgeline.astro';
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead: string;
+  cta?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  /** Background of the section that follows, so the ridgeline sits on it. */
+  nextBg?: string;
+  compact?: boolean;
+}
+const { eyebrow, title, lead, cta, secondary, nextBg = 'var(--rg-bg)', compact = false } = Astro.props;
+---
+<section class:list={['hero section-dark', { compact }]}>
+  <div class="container">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    {(cta || secondary) && (
+      <div class="actions">
+        {cta && <Button href={cta.href} variant="primary">{cta.label}</Button>}
+        {secondary && <Button href={secondary.href} variant="on-dark-outline">{secondary.label}</Button>}
+      </div>
+    )}
+    <slot />
+  </div>
+</section>
+<Ridgeline bg={nextBg} />
+
+<style>
+  .hero { padding-block: clamp(4rem, 10vw, 8.5rem) clamp(3rem, 7vw, 6rem); }
+  .hero.compact { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem); }
+  .eyebrow { margin-bottom: var(--rg-space-4); }
+  h1 { font-size: var(--rg-text-5xl); line-height: var(--rg-leading-display); letter-spacing: var(--rg-tracking-display); max-width: 18ch; }
+  .compact h1 { font-size: var(--rg-text-4xl); line-height: var(--rg-leading-tight); }
+  .lead { margin-top: var(--rg-space-6); max-width: 54ch; font-size: var(--rg-text-xl); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--rg-space-4); margin-top: var(--rg-space-10); }
+  @media (max-width: 767px) {
+    h1 { font-size: var(--rg-text-4xl); }
+    .compact h1 { font-size: var(--rg-text-3xl); }
+    .lead { font-size: var(--rg-text-lg); }
+  }
+</style>
