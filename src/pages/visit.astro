@@ -1,0 +1,105 @@
+---
+/**
+ * Landing page for the QR code on the printed sales flyer (riverguard.solutions/visit).
+ * The reader has the flyer in hand and is almost certainly on a phone, so the
+ * page leads with a tap-to-call number and keeps the rest short.
+ */
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { business, phoneHref, emailHref } from '../data/business';
+const flyerPdf = '/flyers/riverguard-flyer.pdf';
+---
+<Base
+  title="Thanks for picking up our flyer"
+  description="Managed IT and security for small businesses from Bellevue to Ketchum. Call 208-481-0984 or book a walkthrough of your office."
+  footerRidgeBg="var(--rg-navy-900)"
+>
+  <Hero
+    compact
+    eyebrow="Thanks for picking up our flyer"
+    title="IT that just works, from people down the road."
+    lead="Computers patched and protected around the clock, security that never switches off, and a partner who knows your business and where you want it to go."
+    cta={{ label: `Call ${business.phone}`, href: phoneHref }}
+    secondary={{ label: 'Book a walkthrough', href: '/contact' }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <dl class="proof">
+        <div><dd>20+ years</dd><dt>living and working in the valley</dt></div>
+        <div><dd>One number</dd><dt>to call, and a person you know answers</dt></div>
+        <div><dd>Whole valley</dd><dt>Bellevue to Ketchum, and everything in between</dt></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Four things, done properly.</h2>
+        <p class="lead">Not a menu of forty line items. Just what a small business of 1 to 100 people actually needs.</p>
+      </div>
+      <ServiceCards />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container different">
+      <div>
+        <h2>A partner, not a vendor</h2>
+        <p>We’re in Hailey, we know your office, and we sit on your side of the table. We learn what your business is trying to do this year and plan the technology around it, so every recommendation is about your goals, not a quota.</p>
+      </div>
+      <div>
+        <h2>Navigating AI in your business</h2>
+        <p>AI is changing how small offices work, and the pace isn’t slowing down. We help you sort out where it genuinely helps, where to keep it away from your data, and how to bring your staff along, so you’re making decisions instead of reacting to them.</p>
+      </div>
+      <div>
+        <h2>Already have an IT person or team?</h2>
+        <p>We work with them, not around them. They keep the job and the local knowledge; we bring the tooling and coverage they don’t have time to build. <a href="/#co-managed-home">How co-managed IT works</a></p>
+      </div>
+      <div>
+        <h2>Want the flyer as a file?</h2>
+        <p>Both sides, one PDF, easy to forward to a partner or your board. <a href={flyerPdf}>Download the flyer (PDF)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container reach">
+      <div>
+        <p class="eyebrow">Reach us</p>
+        <p class="phone"><a href={phoneHref}>{business.phone}</a></p>
+        <p><a href={emailHref}>{business.email}</a></p>
+        <p class="muted">{business.hours} · Hailey, Idaho</p>
+      </div>
+      <p class="muted area">Serving Bellevue to Ketchum, and everything in between.</p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--rg-space-8); margin: 0; }
+  .proof > div { display: flex; flex-direction: column; gap: var(--rg-space-2); padding-top: var(--rg-space-5); border-top: 2px solid var(--rg-teal-700); }
+  .proof dd { margin: 0; font-size: var(--rg-text-3xl); font-weight: var(--rg-weight-bold); color: var(--rg-text-strong); letter-spacing: var(--rg-tracking-heading); line-height: 1; }
+  .proof dt { color: var(--rg-text-muted); }
+  .different { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--rg-space-12) var(--rg-space-10); }
+  .different h2 { font-size: var(--rg-text-xl); font-weight: var(--rg-weight-semibold); letter-spacing: 0; margin-bottom: var(--rg-space-3); }
+  .different p { color: var(--rg-text); max-width: 46ch; }
+  .reach { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--rg-space-8); }
+  .reach .eyebrow { margin-bottom: var(--rg-space-3); }
+  .reach .phone { font-size: var(--rg-text-3xl); font-weight: var(--rg-weight-bold); line-height: 1.1; margin-bottom: var(--rg-space-2); font-variant-numeric: tabular-nums; }
+  .reach .phone a { color: var(--rg-text-strong); text-decoration: none; }
+  .reach .phone a:hover { color: var(--rg-teal-700); }
+  .reach .muted { color: var(--rg-text-muted); }
+  .reach .area { max-width: 28ch; text-align: right; }
+  @media (max-width: 767px) {
+    .proof, .different { grid-template-columns: 1fr; }
+    .reach { flex-direction: column; align-items: flex-start; }
+    .reach .area { text-align: left; }
+  }
+</style>

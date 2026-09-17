@@ -14,7 +14,7 @@ export const services: Service[] = [
   {
     slug: 'managed-it',
     name: 'Managed IT and monitoring',
-    promise: 'Your computers stay updated and watched, around the clock.',
+    promise: 'Your computers stay updated and protected, around the clock.',
     detail:
       'A small agent runs quietly on every computer and server. It installs updates on a schedule you approve, keeps an eye on disk space, backups, and hardware health, and alerts us the moment something looks wrong — usually before anyone in your office notices.',
     bullets: [
@@ -27,9 +27,9 @@ export const services: Service[] = [
   {
     slug: 'security',
     name: 'Managed security',
-    promise: 'Security that watches every computer around the clock — and a plan for when something gets through.',
+    promise: 'Security that protects every computer around the clock — and a plan for when something gets through.',
     detail:
-      'Every computer gets managed detection and response (MDR): software that runs 24/7 and watches for the behaviour of an attacker, not just known viruses. When it sees something, it isolates that machine automatically to stop the spread — at 3am on a Sunday, or over Christmas, because it doesn’t take time off. Then we investigate and get you back to work. Your Microsoft 365 and email accounts get the same kind of protection, so a stolen password doesn’t become a stolen mailbox.',
+      'Every computer gets managed detection and response (MDR): software that runs 24/7 and looks for the behaviour of an attacker, not just known viruses. When it sees something, it isolates that machine automatically to stop the spread — at 3am on a Sunday, or over Christmas, because it doesn’t take time off. Then we investigate and get you back to work. Your Microsoft 365 and email accounts get the same kind of protection, so a stolen password doesn’t become a stolen mailbox.',
     bullets: [
       'Detection and response running 24/7 on every computer',
       'Compromised machines isolated automatically to stop the spread',
@@ -43,10 +43,10 @@ export const services: Service[] = [
     name: 'Help desk',
     promise: 'A person you know answers.',
     detail:
-      'Call, email, or click the icon on your desktop. You get someone who knows your office — not a queue, not a script, not a different stranger every time. Most fixes happen remotely, often the same day. If it needs hands on a keyboard, we come to you.',
+      'Call, email, or click the icon on your desktop. You get someone who knows your office — not a queue, not a script, not a different stranger every time. Most fixes happen remotely. If it needs hands on a keyboard, we come to you.',
     bullets: [
       'Phone, email, or one click from your desktop',
-      'Remote fixes for most issues, often the same day',
+      'Remote fixes for most issues',
       'We explain what happened in words you’d use yourself',
       'No ticket left open without a next step and a date',
     ],
@@ -54,14 +54,14 @@ export const services: Service[] = [
   {
     slug: 'on-site',
     name: 'On-site service',
-    promise: 'We drive to you. Hailey to Ketchum is 20 minutes.',
+    promise: 'We drive to you, anywhere in the valley.',
     detail:
-      'Some things can’t be fixed over a screen: a dead switch, a new office, a printer that has finally given up, a server that needs to move. We’re in Hailey and we cover the whole valley, so on-site help is a short drive, not a two-day wait for a technician from Boise.',
+      'Some things can’t be fixed over a screen: a dead switch, a new office, a printer that has finally given up, a server that needs to move. We’re in Hailey and we cover the whole valley, so on-site help is a short drive, not a long wait for a technician from Boise.',
     bullets: [
       'New office and move-in setups: network, Wi-Fi, desks, phones',
       'Hardware installs, replacements, and honest end-of-life advice',
       'Scheduled on-site visits if you’d rather see a face than a ticket',
-      'Serving Hailey, Bellevue, Carey, Picabo, Sun Valley, and Ketchum',
+      'Serving Bellevue to Ketchum, and everything in between',
     ],
   },
 ];

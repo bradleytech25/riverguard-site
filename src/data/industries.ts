@@ -28,13 +28,13 @@ export const industries: Industry[] = [
       'Most of the valley runs on small offices: a real estate brokerage on Main Street, an accountant with four staff, a shop in Bellevue, a contractor working out of a truck. You need email that works, files that are safe, and someone to call who already knows your setup — without hiring an IT department.',
     pains: [
       { title: 'The “computer person” is the owner', body: 'Every hour you spend on a printer or a password reset is an hour not spent on clients. We take that job off your desk, and we’re quicker at it.' },
-      { title: 'Email is the business', body: 'Contracts, listings, invoices, and client conversations all live in your inbox. One convincing phishing email can undo a year of work. We lock the door properly and watch it.' },
+      { title: 'Email is the business', body: 'Contracts, listings, invoices, and client conversations all live in your inbox. One convincing phishing email can undo a year of work. We lock the door properly and keep it protected.' },
       { title: 'Growth without a plan', body: 'A new hire needs a laptop, an account, and access on day one. A new office needs Wi-Fi that reaches the back room. We make those routine instead of a scramble.' },
     ],
     whatWeDo: [
-      'New hires set up and working the same week, and departures closed out the same day',
+      'New hires set up and working the same week, and departures closed out as soon as you tell us',
       'Microsoft 365 or Google Workspace protected with multi-factor authentication (MFA) and monitored for account takeover',
-      'Every computer patched and watched around the clock',
+      'Every computer patched and protected around the clock',
       'Backups you can actually restore from, tested regularly',
       'Office Wi-Fi, network, and printers that behave',
       'On-site help across the valley when a screen isn’t enough',
@@ -53,7 +53,7 @@ export const industries: Industry[] = [
       'A clinic that can’t reach its records can’t see patients. We keep the network, the workstations, and the connection to your electronic health record (EHR) up, and we protect the devices and accounts that hold patient information the way patients assume they’re protected.',
     pains: [
       { title: 'Downtime costs appointments', body: 'When the front desk is frozen, patients are rescheduled and staff go home late. Monitoring catches most problems before the first patient arrives.' },
-      { title: 'Patient data on too many devices', body: 'Laptops, tablets, the front-desk PC, a phone with email on it. Every one of them needs to be encrypted, updated, and watched — and retired properly when it’s done.' },
+      { title: 'Patient data on too many devices', body: 'Laptops, tablets, the front-desk PC, a phone with email on it. Every one of them needs to be encrypted, updated, and protected — and retired properly when it’s done.' },
       { title: 'Vendors point at each other', body: 'Your EHR vendor blames the network; the ISP blames the computer. We’re the one number to call, and we stay on the line until it’s working.' },
     ],
     whatWeDo: [
@@ -64,7 +64,7 @@ export const industries: Industry[] = [
       'Backups tested with a real restore, and the result reported to you',
       'Support for your EHR, imaging, and practice-management vendors',
     ],
-    proofLine: 'Serving practices from Hailey to Ketchum, 20 minutes door to door.',
+    proofLine: 'Serving practices from Bellevue to Ketchum, and everything in between.',
     cta: 'Book a walkthrough',
     seoDescription: 'Managed IT and security for medical and surgical practices in Idaho’s Wood River Valley. EHR uptime, encrypted devices, 24/7 monitoring, and a local number.',
   },
@@ -75,7 +75,7 @@ export const industries: Industry[] = [
     eyebrow: 'Highway districts, water districts, rural co-ops',
     headline: 'Public money, public records, and a board that wants a straight answer.',
     intro:
-      'Districts and cooperatives run lean: a small office, a few field staff, and systems that everyone in the county depends on. We keep those systems patched and watched, keep public records retrievable, and give your board a one-page report they can actually read.',
+      'Districts and cooperatives run lean: a small office, a few field staff, and systems that everyone in the county depends on. We keep those systems patched and protected, keep public records retrievable, and give your board a one-page report they can actually read.',
     pains: [
       { title: 'Records requests can’t wait on a broken server', body: 'Public records law doesn’t care that the file server is down. Backups, retention, and searchable archives are part of the service, not an add-on.' },
       { title: 'Field staff and office staff need the same access', body: 'Trucks, shops, and pump houses aren’t offices. We set up secure remote access that works from a tablet in a cab.' },
@@ -89,7 +89,7 @@ export const industries: Industry[] = [
       'Cyber insurance questionnaire support, with evidence',
       'A plain-English quarterly report for the board',
     ],
-    proofLine: 'Based in Hailey, on the road to Carey and Picabo when you need us.',
+    proofLine: 'Based in Hailey, on the road anywhere in the valley when you need us.',
     cta: 'Talk to us',
     seoDescription: 'Managed IT for highway districts, water districts, and rural co-ops in the Wood River Valley. Patching, 24/7 security, records-ready backups, board-ready reporting.',
   },
@@ -104,13 +104,13 @@ export const industries: Industry[] = [
     pains: [
       { title: 'Mixed, aging hardware', body: 'Donated machines are welcome; unpatched machines are not. We bring every device up to a safe baseline and tell you honestly which ones to retire.' },
       { title: 'Donor data is a trust', body: 'Names, addresses, and giving history deserve the same protection as a medical record. MFA, encryption, and monitoring are included, not upsold.' },
-      { title: 'Staff turnover and volunteers', body: 'People come and go. We handle onboarding and offboarding so a departed volunteer’s login is closed the same day.' },
+      { title: 'Staff turnover and volunteers', body: 'People come and go. We handle onboarding and offboarding so a departed volunteer’s login is closed as soon as you tell us.' },
     ],
     whatWeDo: [
       'Help claiming non-profit pricing on Microsoft 365, Google Workspace, and more',
       'A safe baseline for every donated or aging device',
       '24/7 monitoring and security on the same footing as our business clients',
-      'Fast onboarding and same-day offboarding for staff and volunteers',
+      'Fast onboarding and prompt offboarding for staff and volunteers',
       'Backup for donor databases and grant files, tested regularly',
       'Predictable monthly pricing that fits a grant budget',
     ],

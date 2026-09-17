@@ -26,14 +26,14 @@ export const business = {
   },
 
   yearsLocal: 20,
-  serviceArea: ['Hailey', 'Bellevue', 'Carey', 'Picabo', 'Sun Valley', 'Ketchum'],
+  serviceArea: ['Bellevue', 'Hailey', 'Sun Valley', 'Ketchum'],
   region: 'Wood River Valley',
 
   /** Proof strip numbers. Keep to three. Numbers beat adjectives. */
   stats: [
     { value: '20+', label: 'years in the valley' },
     { value: '24/7', label: 'monitoring and security' },
-    { value: '< 1 hr', label: 'average response time' },
+    { value: 'One number', label: 'to call, and a person you know answers' },
   ],
 
   /**
@@ -63,7 +63,7 @@ export const phoneHref = isPlaceholder(business.phone)
 
 export const emailHref = isPlaceholder(business.email) ? '#' : `mailto:${business.email}`;
 
-/** "Hailey, Bellevue, Carey, Picabo, Sun Valley, and Ketchum" */
+/** "Bellevue, Hailey, Sun Valley, and Ketchum" */
 export const serviceAreaSentence = (() => {
   const towns = [...business.serviceArea];
   const last = towns.pop();
